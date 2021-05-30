@@ -22,6 +22,17 @@ class LinkedList:
         new_node.next = previous_node.next
         previous_node.next = new_node
     
+    def append(self, new_data):
+        new_node = Node(new_data)
+        if self.head is None:
+            self.head = new_node
+            return 
+        current = self.head
+        while(current.next):
+            current = current.next
+        current.next = new_node
+        new_node.next = None
+
     def print_list(self):
         current = self.head
         while(current):
@@ -31,6 +42,8 @@ class LinkedList:
 
 
 linkedlist = LinkedList()
+
+linkedlist.append(10)
 
 linkedlist.push(1)
 linkedlist.push(2)
@@ -44,5 +57,10 @@ linkedlist.insert_after_node(linkedlist.head.next,5)
 linkedlist.print_list()
 
 linkedlist.insert_after_node(None,7)
+
+linkedlist.print_list()
+
+linkedlist.append(8)
+linkedlist.append(9)
 
 linkedlist.print_list()
