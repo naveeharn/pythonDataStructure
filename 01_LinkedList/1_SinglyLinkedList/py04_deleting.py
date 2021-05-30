@@ -95,6 +95,14 @@ class LinkedList:
         print("recursive")
         return self.delete_node_data_recursive(target_data, current)
 
+    def delete_list(self):
+        current = self.head
+        self.head = None
+        while current:
+            previous = current.next
+            del current.data
+            current = previous
+
     def print_list(self):
         current = self.head
         while(current):
@@ -131,5 +139,11 @@ linkedlist.delete_node_data_recursive(5, linkedlist.head)
 linkedlist.print_list()
 
 linkedlist.delete_node_data_recursive(9, linkedlist.head)
+
+linkedlist.print_list()
+
+linkedlist.delete_list()
+
+linkedlist.push(112)
 
 linkedlist.print_list()
