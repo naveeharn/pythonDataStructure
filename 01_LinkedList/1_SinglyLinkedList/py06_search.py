@@ -61,6 +61,20 @@ class LinkedList:
     def search_data_recursive_short(self, target_position):
         return self.search_data_recursive(0, target_position, self.head)
 
+    def search_data_from_last(self, target_position):
+        current = self.head
+        count = 0
+        while current:
+            count += 1
+            current = current.next
+        if count < target_position:
+            print("Location is greater than length of LinkedList")
+            return None
+        current = self.head
+        for i in range(0,count-target_position):
+            current = current.next
+        return current.data
+
 
     def print_list(self):
         current = self.head
@@ -99,3 +113,10 @@ print(linkedlist.search_data_recursive_short(4))
 
 print(linkedlist.search_data_recursive(0, 10, linkedlist.head))
 print(linkedlist.search_data_recursive_short(10))
+
+print()
+
+print(linkedlist.search_data_from_last(4))
+print(linkedlist.search_data_from_last(9))
+print(linkedlist.search_data_from_last(10))
+print(linkedlist.search_data_from_last(11))
