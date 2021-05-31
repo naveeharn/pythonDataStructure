@@ -40,7 +40,7 @@ class LinkedList:
     def cheak_data_recursive_short(self, targrt_data):
         return self.cheak_data_recursive(targrt_data, self.head)
 
-    def search_position(self, target_position):
+    def search_data(self, target_position):
         current = self.head
         index = 0
         while current:
@@ -51,15 +51,16 @@ class LinkedList:
         # assert(False)
         return None
 
-    def search_position_recursive(self, start_index, target_position, current):
+    def search_data_recursive(self, start_index, target_position, current):
         if (current is not None) and (start_index == target_position):
             return current.data
         if not current:
             return None
-        return self.search_position_recursive(start_index + 1, target_position, current.next)
+        return self.search_data_recursive(start_index + 1, target_position, current.next)
 
-    def search_position_recursive_short(self, target_position):
-        return self.search_position_recursive(0, target_position, self.head)
+    def search_data_recursive_short(self, target_position):
+        return self.search_data_recursive(0, target_position, self.head)
+
 
     def print_list(self):
         current = self.head
@@ -88,13 +89,13 @@ print(linkedlist.cheak_data_recursive_short(10))
 
 print()
 
-print(linkedlist.search_position(3))
-print(linkedlist.search_position(10))
+print(linkedlist.search_data(3))
+print(linkedlist.search_data(10))
 
 print()
 
-print(linkedlist.search_position_recursive(0, 4, linkedlist.head))
-print(linkedlist.search_position_recursive_short(4))
+print(linkedlist.search_data_recursive(0, 4, linkedlist.head))
+print(linkedlist.search_data_recursive_short(4))
 
-print(linkedlist.search_position_recursive(0, 10, linkedlist.head))
-print(linkedlist.search_position_recursive_short(10))
+print(linkedlist.search_data_recursive(0, 10, linkedlist.head))
+print(linkedlist.search_data_recursive_short(10))
