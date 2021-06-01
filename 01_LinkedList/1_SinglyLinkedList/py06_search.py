@@ -75,6 +75,30 @@ class LinkedList:
             current = current.next
         return current.data
 
+    def search_data_middle(self):
+        current = self.head
+        count = 0
+        while current:
+            count += 1
+            current = current.next
+        current = self.head
+        for i in range(0,int(count/2)):
+            current = current.next
+        return current.data
+
+    def search_data_middle_double_pointer(self):
+        current = self.head
+        middle = self.head
+        count = 0
+        while current:
+            count += 1
+            if count%2 == 0:
+                middle = middle.next
+            current = current.next
+        if middle:
+            return middle.data
+        else:
+            return None
 
     def print_list(self):
         current = self.head
@@ -90,11 +114,13 @@ for i in range(0, 10):
     linkedlist.push(i)
 linkedlist.print_list()
 
+# check data
 print(linkedlist.cheak_data(4))
 print(linkedlist.cheak_data(10))
 
 print()
 
+# check data with recursive
 print(linkedlist.cheak_data_recursive(4, linkedlist.head))
 print(linkedlist.cheak_data_recursive_short(4))
 
@@ -103,11 +129,13 @@ print(linkedlist.cheak_data_recursive_short(10))
 
 print()
 
+# search data
 print(linkedlist.search_data(3))
 print(linkedlist.search_data(10))
 
 print()
 
+# search data with recursive
 print(linkedlist.search_data_recursive(0, 4, linkedlist.head))
 print(linkedlist.search_data_recursive_short(4))
 
@@ -116,7 +144,20 @@ print(linkedlist.search_data_recursive_short(10))
 
 print()
 
+# search data from last node
 print(linkedlist.search_data_from_last(4))
 print(linkedlist.search_data_from_last(9))
 print(linkedlist.search_data_from_last(10))
 print(linkedlist.search_data_from_last(11))
+
+print()
+
+# search data middle
+linkedlist.print_list()
+print(linkedlist.search_data_middle())
+print(linkedlist.search_data_middle_double_pointer())
+linkedlist.push(10)
+print()
+linkedlist.print_list()
+print(linkedlist.search_data_middle())
+print(linkedlist.search_data_middle_double_pointer())
