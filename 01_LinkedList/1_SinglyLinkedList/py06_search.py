@@ -48,7 +48,7 @@ class LinkedList:
                 return current.data
             current = current.next
             index += 1
-        # assert(False)
+        # assert(False) // syntax error
         return None
 
     def search_data_recursive(self, start_index, target_position, current):
