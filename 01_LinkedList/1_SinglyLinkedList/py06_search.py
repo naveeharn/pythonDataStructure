@@ -100,6 +100,25 @@ class LinkedList:
         else:
             return None
 
+    def search_data_frequency(self, target_data):
+        current = self.head
+        count = 0
+        while current:
+            if current.data == target_data:
+                count += 1
+            current = current.next
+        return count
+
+    def search_data_frequency_recursive(self, target_data, current):
+        if current and current.data == target_data:
+            return 1 + self.search_data_frequency_recursive(target_data, current.next)
+        if not current:
+            return 0
+        return self.search_data_frequency_recursive(target_data, current.next)
+
+    def search_data_frequency_recursive_short(self,target_data):
+        return self.search_data_frequency_recursive(target_data, self.head)
+
     def print_list(self):
         current = self.head
         while current:
@@ -161,3 +180,22 @@ print()
 linkedlist.print_list()
 print(linkedlist.search_data_middle())
 print(linkedlist.search_data_middle_double_pointer())
+
+print()
+
+# search frequency of data
+linkedlist.push(8)
+linkedlist.push(8)
+linkedlist.push(4)
+print(linkedlist.search_data_frequency(0))
+print(linkedlist.search_data_frequency(1))
+print(linkedlist.search_data_frequency(4))
+print(linkedlist.search_data_frequency(8))
+
+print()
+
+# search frequency of data
+print(linkedlist.search_data_frequency_recursive_short(0))
+print(linkedlist.search_data_frequency_recursive_short(1))
+print(linkedlist.search_data_frequency_recursive_short(4))
+print(linkedlist.search_data_frequency_recursive_short(8))
