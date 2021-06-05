@@ -14,6 +14,7 @@ linkedlist.head = Node(1)
 
 secondData = Node(2)
 thirdData = Node(3)
+fourthData = Node(4)
 
 '''
     Three nodes have been created.
