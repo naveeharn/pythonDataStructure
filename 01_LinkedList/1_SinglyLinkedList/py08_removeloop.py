@@ -21,6 +21,15 @@ class LinkedList:
             element.add(current)
             current = current.next
         return False
+        
+    def check_detectloop_floydcycle(self):
+        slow_current = fast_current = self.head
+        while slow_current and fast_current and fast_current.next:
+            slow_current = slow_current.next
+            fast_current = fast_current.next
+            if slow_current == fast_current:
+               return True
+        return False
 
     def removeloop_set(self):
         previous = self.head
@@ -38,6 +47,28 @@ class LinkedList:
             element.add(current)
             previous = previous.next
             current = current.next
+
+    def removeloop_floydcycle(self):
+        if self.check_detectloop_floydcycle():
+            previous = current = self.head
+            # count the number of nodes in loop
+            k = 1
+            while previous.next != current:
+                previous = previous.next
+                k+=1
+
+            previous = current = self.head
+            for i in range(k):
+                current = current.next
+            
+            while previous != current:
+                previous = previous.next
+                current = current.next
+
+            while previous != current.next:
+                current = current.next
+
+            current.next = None
 
     def print_list(self):
         current = self.head
@@ -59,3 +90,10 @@ print(linkedlist.check_detectloop_set())
 linkedlist.removeloop_set()
 linkedlist.print_list()
 print(linkedlist.check_detectloop_set())
+
+print()
+print(linkedlist.check_detectloop_floydcycle())
+linkedlist.head.next.next.next.next = linkedlist.head
+print(linkedlist.check_detectloop_floydcycle())
+linkedlist.removeloop_floydcycle()
+print(linkedlist.check_detectloop_floydcycle())
