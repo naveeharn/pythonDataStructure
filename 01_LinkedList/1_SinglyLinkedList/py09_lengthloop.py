@@ -62,6 +62,27 @@ class LinkedList:
             current = current.next
             length_linkedlist += 1
 
+    def lengthloop_floydcycle(self):
+        if not self.head:
+            print("no loop\n")
+            return 0
+        slow_c = fast_c = self.head
+        flag = 0    # to show that both slow and fast are at start of the Linked List
+        while slow_c and slow_c.next and fast_c and fast_c.next and fast_c.next.next:
+            if slow_c == fast_c and flag != 0:
+                count = 1
+                slow_c = slow_c.next
+                while slow_c != fast_c:
+                    slow_c = slow_c.next
+                    count += 1
+                print(count,end="\n")
+                return count
+            slow_c = slow_c.next
+            fast_c = fast_c.next.next
+            flag = 1
+        print("no loop\n")
+        return 0
+
     def print_list(self):
         if not self.check_detectloop_set():
             current = self.head
@@ -99,3 +120,11 @@ for i in range(5):
     linkedlist.createloop(i)
     print(linkedlist.check_detectloop_set())
     linkedlist.lengthloop_set()
+
+print("\n= = = = = = = = = = = = = = = = = = = =\n")
+
+for i in range(5):
+    linkedlist.head.next.next.next.next = None
+    linkedlist.createloop(i)
+    print(linkedlist.check_detectloop_set())
+    linkedlist.lengthloop_floydcycle()
