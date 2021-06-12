@@ -23,6 +23,7 @@ class LinkedList:
         self.tail = new_node
     
     def check_palindrome(self):
+        print("check_palindrome",end=" ")
         head_current = self.head
         tail_current = self.tail
         while head_current:
@@ -36,6 +37,22 @@ class LinkedList:
                 current = current.next
             tail_current = current
         return True
+
+    def check_palindrome_stack(self):
+        print("check_palindrome_stack",end=" ")
+        current = self.head
+        stack = []
+        while current:
+            stack.append(current.data)
+            current = current.next
+        current = self.head
+        while stack:
+            data = stack.pop()
+            if current.data != data:
+                return False
+            current = current.next
+        return True
+
 
     def print_list(self):
         current = self.head
@@ -55,6 +72,7 @@ linkedlist.append("r")
 linkedlist.print_list()
 
 print(linkedlist.check_palindrome())
+print(linkedlist.check_palindrome_stack())
 
 print()
 
@@ -80,3 +98,4 @@ linkedlist.append("n")
 linkedlist.print_list()
 
 print(linkedlist.check_palindrome())
+print(linkedlist.check_palindrome_stack())
