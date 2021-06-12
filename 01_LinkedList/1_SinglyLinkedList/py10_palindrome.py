@@ -23,8 +23,19 @@ class LinkedList:
         self.tail = new_node
     
     def check_palindrome(self):
-        
-        print()
+        head_current = self.head
+        tail_current = self.tail
+        while head_current:
+            if head_current.data != tail_current.data:
+                return False
+            if head_current == tail_current or head_current.next == tail_current:
+                return True
+            current = head_current 
+            head_current = head_current.next
+            while current.next and current.next != tail_current:
+                current = current.next
+            tail_current = current
+        return True
 
     def print_list(self):
         current = self.head
@@ -42,3 +53,30 @@ linkedlist.append("a")
 linkedlist.append("r")
 
 linkedlist.print_list()
+
+print(linkedlist.check_palindrome())
+
+print()
+
+linkedlist = LinkedList()
+
+linkedlist.append("n")
+linkedlist.append("o")
+linkedlist.append("l")
+linkedlist.append("e")
+linkedlist.append("m")
+linkedlist.append("o")
+linkedlist.append("n")
+linkedlist.append("_")
+linkedlist.append("_")
+linkedlist.append("n")
+linkedlist.append("o")
+linkedlist.append("m")
+linkedlist.append("e")
+linkedlist.append("l")
+linkedlist.append("o")
+linkedlist.append("n")
+
+linkedlist.print_list()
+
+print(linkedlist.check_palindrome())
