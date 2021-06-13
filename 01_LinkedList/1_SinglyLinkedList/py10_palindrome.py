@@ -33,7 +33,7 @@ class LinkedList:
                 return True
             current = head_current 
             head_current = head_current.next
-            while current.next and current.next != tail_current:
+            while current.next != tail_current:
                 current = current.next
             tail_current = current
         return True
