@@ -74,7 +74,7 @@ linkedlist.print_list()
 print(linkedlist.check_palindrome())
 print(linkedlist.check_palindrome_stack())
 
-print("   \n")
+print("  \n")
 
 linkedlist = LinkedList()
 
